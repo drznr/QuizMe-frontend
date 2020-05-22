@@ -1,0 +1,78 @@
+.quiz-app {
+    flex: 1;
+    position: relative;
+    
+    
+    &-nav {
+        position: absolute;
+        height: 100%;
+        width: 55px;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        background-color: $clr3;
+        color: $white;
+        transition: all .3s ease-in-out;
+
+        &.open {
+            width: 205px;
+            padding: 20px;
+            align-items: flex-start;
+
+            & .link-label {
+                opacity: 1;
+                visibility: visible;
+                position: initial;
+            }
+        }
+        @include hover-supported {
+            width: 205px;
+            padding: 20px;
+            align-items: flex-start;
+
+            & .link-label {
+                opacity: 1;
+                visibility: visible;
+                position: initial;
+            }
+        }
+        &-link {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            transition: color .3s;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+            .link-label {
+                font-size: 1rem;
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                margin-left: 5px;
+                transition-property: opacity;
+                transition-delay: .3s;
+            }
+        }
+        .router-link-exact-active {
+            color: $clr2;
+        }
+        .user-link.router-link-active {
+            color: $clr2;
+        }
+    }
+    &-content {
+        margin-left: 55px;
+    }
+    .quiz-list {
+        padding-left: 10px;
+
+        [alt=loader] {
+            padding-top: 40px;
+            margin-left: calc(50% - 100px);
+        }
+    }
+}

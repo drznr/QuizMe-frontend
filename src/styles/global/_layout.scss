@@ -1,0 +1,62 @@
+/// Main Layout
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    width: 100%;
+    max-width: $break-wide; 
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include for-wide-layout {
+        padding: 0;
+    }
+}
+
+/// Components Layout
+.layout {
+    &-main-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        ul {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            
+            @include for-narrow-layout {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+    &-home-page {
+        display: flex;
+        flex-direction: column;
+
+        @include for-narrow-layout {
+            flex-direction: row;
+            justify-content: space-between;
+
+            & > * {
+                flex-basis: unset;
+            }
+        }
+        & > * {
+            flex-basis: 45%;
+        }
+    }
+}
+.answers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 5%;
+    @include for-mobile-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}

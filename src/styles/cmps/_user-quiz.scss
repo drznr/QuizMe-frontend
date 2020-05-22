@@ -1,0 +1,42 @@
+.user-quiz {
+    width: 90%;
+    max-width: 700px;
+
+    &-preview {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: space-between;
+        border-bottom: $border-slight;
+        padding: rem(10px) 0;
+        margin-bottom: rem(10px);
+        @include for-mobile-layout {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        &-stats {
+            h2 {
+                font-size: rem(18px);
+                margin-bottom: 5px;
+            }
+
+            span:last-child {
+                font-size: .8em;
+                margin-left: 10px;
+            }
+        }
+        &-actions {
+            font-size: rem(18px);
+            color: $clr3;
+            margin-top: rem(15px);
+            @include for-mobile-layout {
+                margin-top: 0;
+            }
+
+            a:first-child {
+                margin-right: rem(20px);
+            }
+        }
+    }
+}

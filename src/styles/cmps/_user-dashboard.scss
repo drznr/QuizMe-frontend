@@ -1,0 +1,17 @@
+.user-dashboard {
+    &-nav {
+        background-color: rgba($black, .7);
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: rem(10px) 0;
+        font-size: rem(18px);
+        text-transform: uppercase;
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+    }
+}

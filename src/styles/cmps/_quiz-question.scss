@@ -1,0 +1,113 @@
+.quiz-question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    &.left {
+        animation: fade-left .4s ease-in-out;
+    }
+    &.right {
+        animation: fade-right .4s ease-in-out;
+    }
+    &-card {
+        background-color: $white;
+        border: $border-slight;
+        border-radius: 3px;
+        box-shadow: $shadow;
+        padding: rem(20px) rem(60px);
+
+        &.answered {
+            opacity: .7;
+
+            button {
+                cursor: not-allowed;
+                opacity: 1;
+                color: $red;
+                border-color: $red;
+                @include hover-supported {
+                    background-color: transparent;
+                    color: $red;
+                }
+                &.right {
+                    color: $green;
+                    border-color: $green;
+                    @include hover-supported {
+                        color: $green;
+                    }
+                }
+            }
+        }
+        h2 {
+            max-width: 450px;
+            font-size: rem(22px);
+            padding-bottom: rem(10px);
+            margin-bottom: rem(40px);
+            border-bottom: $border-slight;
+            @include for-mobile-layout {
+                font-size: rem(26px);
+            }
+        }
+        &-ans {
+            font-size: rem(18px);
+            padding-bottom: 20px;
+            @include for-mobile-layout {
+                grid-gap: 20%;
+            }
+            @include for-narrow-layout {
+                grid-gap: 25%;
+            }
+
+            button {
+                border: 2px solid $clr3;
+                color: $clr3;
+                border-radius: 100px;
+                padding: 3px 0;
+                margin-bottom: 20px;
+                transition: all .3s linear;
+                @include for-mobile-layout {
+                   margin-bottom: 10px;
+                }
+
+                @include hover-supported {
+                    background-color: $clr3;
+                    color: $white;
+                }
+            }
+        }
+        &-body {
+            margin-bottom: rem(40px);
+        }
+        .quote {
+            font-family: raleway-bold, sans-serif;
+            color: rgba($black, .75);
+            padding: 0 20px;
+
+            .icon {
+                position: relative;
+                color: rgba(#000000, .1);
+
+                &.left {
+                    bottom: rem(10px);
+                }
+                &.right {
+                    top: rem(10px);
+                }
+            }
+        }
+        .question-img {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 3px;
+        }
+    }
+}
+
+@keyframes fade-left {
+    0% {transform: translateX(-100px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+@keyframes fade-right {
+    0% {transform: translateX(100px); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}

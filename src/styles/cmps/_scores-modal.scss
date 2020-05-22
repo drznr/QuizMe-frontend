@@ -1,0 +1,66 @@
+.scores-modal {
+    background-image: linear-gradient(to top, $clr3 0, $clr3 10px, $white 10px, $white 100%);
+    padding: rem(40px) rem(20px);
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 3px;
+    z-index: 100;
+    max-width: 90%;
+
+    li {
+        margin-bottom: rem(10px);
+        padding: rem(10px) 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        @include for-mobile-layout {
+            flex-direction: row;
+        }
+
+        & > * {
+            display: inline-block;
+            margin: 0 0 rem(10px);
+            @include for-mobile-layout {
+                margin: 0 rem(10px);
+            }
+        }
+        .avatar {
+            width: 30px;
+            border-radius: 50%;
+            margin-top: -15px;
+        }
+        .percentage {
+            color: $red;
+
+            &.good {
+                color: $green;
+            }
+        }
+        .username {
+            font-family: raleway-bold, sans-serif;
+        }
+        .icon {
+            cursor: initial;
+            font-size: .7em;
+        }
+    }
+    &-user {
+        border-bottom: $border-slight;
+    }
+    &-actions {
+        margin-top: rem(40px);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-family: raleway-bold, sans-serif;
+        transition: all .3s linear;
+        
+        & > * {
+            @include hover-supported {
+                text-decoration: underline;
+                text-shadow: $bold;
+            }
+        }
+    }
+}

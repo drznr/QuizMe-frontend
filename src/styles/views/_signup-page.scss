@@ -1,0 +1,69 @@
+.signup-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        text-align: center;
+        font-size: rem(32px);
+        padding: rem(30px) 0;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        @include for-mobile-layout {
+            flex-direction: row;
+        }
+
+        [required] {
+           @include input-form;
+           margin-bottom: rem(20px);
+           @include for-mobile-layout {
+               margin-bottom: 0;
+           }
+        }
+        [placeholder=Email] {
+            background-image: url('./assets/imgs/email.svg');
+        }
+        [placeholder=Username] {
+            background-image: url('./assets/imgs/user.svg');
+        }
+        [placeholder=Password] {
+            background-image: url('./assets/imgs/pass.svg');
+        }
+        .img-input {
+            display: flex;
+            align-items: center;
+
+            .ratio-square {
+                width: 200px;
+                border-radius: 3px;
+                margin-left: 5px;
+            }
+        }
+        [type=submit] {
+            @include btn-form;
+            cursor: pointer;
+            align-self: center;
+            transform: translateY(40px);
+
+            @include for-mobile-layout {
+                align-self: flex-start;
+                transform: translate(-50%, 80px);
+            }
+        }
+    }
+    &-divider {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @include for-mobile-layout {
+            margin: 0 20px;
+            &:first-child {
+                padding-bottom: 34px;
+            }
+        }
+    }
+}

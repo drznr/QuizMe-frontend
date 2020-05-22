@@ -1,0 +1,121 @@
+.main-navbar {
+    position: sticky;
+    background-color: $white;
+    z-index: 9;
+    top: 0;
+    padding: rem(20px) 0;
+    border-bottom: $border-slight;
+    overflow: hidden;
+    transition: box-shadow .3s linear;
+
+    &.sticky {
+        box-shadow: $shadow;
+    }
+    &-hamburger {
+        @include for-narrow-layout {
+            display: none;
+        }
+    }
+    &-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 90%;
+        background-color: $clr2;
+        font-size: rem(20px);
+        text-transform: uppercase;
+        font-family: raleway-bold, sans-serif;
+        transform: translateX(101%);
+        transition: transform .6s ease-in-out;
+
+        @include for-narrow-layout {
+            position: initial; 
+            top: unset;
+            left: unset;
+            height: unset;
+            width: unset;
+            background-color: transparent;
+            transform: none;
+            width: 40%;
+        }
+
+        &.open {
+            transform: translateX(0);
+        }
+        &-link {
+            display: inline-block;
+            margin: 10px 0;
+            padding: rem(5px) rem(15px);
+            border: 1px solid transparent;
+            border-radius: 100px;
+            transition: all .3s ease-in-out;
+            @include for-narrow-layout {
+                margin: 0;
+            }
+        }
+        .router-link-exact-active {
+            color: $clr3;
+            border-color: $clr3;
+        }
+        &-avatar {
+            position: relative;
+            cursor: pointer;
+
+            .avatar {
+                width: 35px;
+                height: 35px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            &-guest {
+                color: $white;
+                padding: rem(5px) rem(10px);
+                border-radius: 50%;
+            }
+            &-arr {
+                width: 15px;
+                position: absolute;
+                top: calc(50% - 7.5px);
+                left: -17px;
+                transition: transform .2s;
+            }
+            [type=checkbox]:checked + &-arr {
+                transform: rotateZ(-180deg);
+            }
+            [type=checkbox]:checked ~ &-dropdown {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+            &-dropdown {
+                position: absolute;
+                bottom: -150%;
+                left: -150%;
+                font-size: .6em;
+                text-transform: capitalize;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5px;
+                background-color: #fff;
+                border: $border-slight;
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: top;
+                box-shadow: $shadow;
+                transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+                
+                &>* {
+                    transition: all .2s;
+                    &:hover {
+                        text-decoration: underline;
+                        text-shadow: $bold;
+                    }
+                    &:not(:last-child) {
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

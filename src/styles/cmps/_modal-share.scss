@@ -1,0 +1,94 @@
+.modal-share {
+    padding: rem(20px) rem(10px);
+    background-color: $white;
+    border: $border-slight;
+    box-shadow: $shadow;
+    border-radius: 3px;
+    @include for-mobile-layout {
+        padding: rem(20px) rem(40px);
+    }
+
+    h3 {    
+        text-align: center;
+        font-size: rem(24px);
+        border-bottom: $border-slight;
+        padding-bottom: rem(10px);
+        color: $clr3;
+    }
+    hr {
+        border: 1px solid $clr3;
+    }
+    &-actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: rem(30px) 0;
+        text-align: center;
+        font-size: rem(18px);
+
+        & > * {
+            transition: text-shadow .3s;
+            @include hover-supported {
+                text-shadow: $bold;
+            }
+        }
+        span {
+            display: block;
+            margin-top: 5px;
+        }
+    }
+    &-social {
+        padding-top: rem(20px);
+        font-size: rem(22px);
+        
+        .icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            @include for-mobile-layout {
+                justify-content: space-between;
+            }
+
+            [data-icon] {
+                transition: transform .3s;
+
+            @include hover-supported {
+                transform: scale(1.4);
+            }
+            }
+            [data-icon=facebook] {
+                color: #3b5998;
+            }
+            [data-icon=whatsapp] {
+                color: #25d366;
+            }
+            [data-icon=telegram] {
+                color: #0088cc;
+            }
+            [data-icon=linkedin] {
+                color: #0e76a8 ;
+            }
+        }
+    }
+   
+} 
+.portal-msg {
+    padding: rem(10px) 20px;
+    display: flex;
+    justify-content: space-between;
+    align-self: start;
+    text-transform: capitalize;
+    font-weight: 700;
+    background-color: $clr2;
+    color: darken($clr2, 30%);
+    @include for-narrow-layout {
+        padding: rem(10px) 60px;
+    }
+
+    span {
+        display: inline-block;
+        font-size: 1.5em;
+        display: inline-block;
+        cursor: pointer;
+    }
+}

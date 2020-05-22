@@ -1,0 +1,98 @@
+.quiz-edit {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+
+    &-form {
+        width: 80%;
+        max-width: 760px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 10px 0;
+
+        &-toolbar {
+            position: sticky;
+            top: 100px;
+            margin-top: 10px;
+            margin-left: 5px;
+            height: fit-content;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 16px;
+            padding: 15px 0;
+            background-color: rgba($black, .15);
+            box-shadow: $shadow;
+            border-radius: 100px;
+
+            .icon {
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+                &.remove {
+                    color: $red;
+                }
+            }
+        }
+        &-group {
+            display: flex;
+            flex-direction: column;
+            background-color: $white;
+            padding: rem(20px);
+            border: $border-slight;
+            border-radius: 8px;
+            box-shadow: $shadow;
+            margin-top: 12px;
+            cursor: move;
+
+            &.main {
+                background-image: linear-gradient(to bottom, $clr3 0%, $clr3 10px, $white 10px, $white 100%);
+                border: none;
+                cursor: initial;
+                padding-bottom: rem(40px);
+                margin-top: 0;
+
+                [placeholder=Title] {
+                    padding-bottom: rem(8px);
+                    font-size: rem(32px);
+                    font-family: raleway-bold, sans-serif;
+                    text-transform: capitalize;
+                }
+            }
+            [type=text] {
+                background-color: transparent;
+                border: none;
+                border-bottom: $border-slight;
+                line-height: 150%;
+                transition: border-color .4s linear;
+
+                &:focus {
+                    border-color: $clr3;
+                }
+            }
+        }
+        [type=submit] {
+            border: $border-slight;
+            //box-shadow: $shadow;
+            color: $white;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: rem(4px) 0;
+            margin-top: 12px;
+            border-radius: 8px;
+            @include ripple($clr1);
+        }
+    }
+}
+.ghost {
+    opacity: .3;
+}
+.enter-top-enter-active, .enter-top-leave-active {
+    transition: opacity .3s, transform .3s;
+}
+.enter-top-enter, .enter-top-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateY(-10px);
+    opacity: 0;
+}

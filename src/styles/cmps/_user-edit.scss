@@ -1,0 +1,32 @@
+.user-edit {
+    font-size: rem(18px);
+    width: 100%;
+    max-width: 400px;
+    padding-left: 20px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        [placeholder] {
+            @include input-form;
+            margin-bottom: 10px;
+        }
+        .img-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+
+            .ratio-square {
+                width: 200px;
+                border-radius: 3px;
+                margin-left: 5px;
+            }
+        }
+        [type=submit] {
+            @include btn-form;
+        }
+    }
+}

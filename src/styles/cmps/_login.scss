@@ -1,0 +1,38 @@
+.login {
+    padding: rem(40px) rem(20px);
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 3px;
+    z-index: 100;
+    max-width: 90%;
+    font-size: rem(18px);
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        [required] {
+            @include input-form;
+            margin-bottom: rem(20px);
+        }
+        [type=submit] {
+            cursor: pointer;
+            @include btn-form;
+            align-self: center;
+            margin-bottom: rem(10px);
+        }
+        p {
+            font-size: .8em;
+
+            .link {
+                color: $clr3;
+                text-decoration: underline;
+                transition: text-shadow .2s;
+
+                @include hover-supported {
+                    text-shadow: $bold;
+                }
+            }
+        }
+    }
+}

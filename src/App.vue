@@ -1,32 +1,44 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" :class="{edit: $route.name === 'quiz-edit'}">
+    <main-navbar v-if="$route.name !== 'quiz-page'"></main-navbar>
+    <transition name="slither" mode="out-in">
+      <router-view />
+    </transition>
+    <main-footer v-if="$route.name !== 'quiz-page'"></main-footer>
+    <portal-tooltip></portal-tooltip>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import mainNavbar from '@/cmps/main-navbar.cmp';
+import mainFooter from '@/cmps/main-footer.cmp';
+import portalTooltip from '@/cmps/portal-tooltip.cmp'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  async created() {
+    await this.$store.dispatch({ type: 'loadQuizzes' });
+    this.$store.commit({ type: 'setSubjects' });
+  },
+  components: {
+    mainNavbar,
+    mainFooter,
+    portalTooltip
   }
 }
+</script>
+
+<style lang="scss">
+  .slither-enter-active, .slither-leave-active {
+    transition: all .6s ease-in-out;
+  }
+  
+  .slither-enter, .slither-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .slither-enter-to, .slither-leave {
+    transform: translateX(0);
+    opacity: 1;
+  }
 </style>

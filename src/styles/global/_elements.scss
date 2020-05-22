@@ -1,0 +1,107 @@
+@mixin btn-simple-round($bg, $clr) {
+    text-transform: capitalize;
+    border-radius: 100px;
+    background-color: $bg;
+    border-color: $bg;
+    font-size: rem(18px);
+    color: $clr;
+    padding: rem(10px) rem(20px);
+    position: relative;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        background-color: $clr2;
+        z-index: -1;
+        opacity: 1;
+        transition: transform .4s linear, opacity .4s linear;
+    }
+    @media not all and (pointer: coarse) {
+        &:hover::before {
+            z-index: unset;
+            transform: scale(1.25);
+            opacity: 0;
+        }
+    }
+}
+@mixin input-simple($bgc, $color) {
+    border-radius: 3px;
+    padding: rem(5px) rem(20px);
+    background-color: $bgc;
+    border: 2px solid $color;
+    color: $color;
+    transition: box-shadow .3s ease-in-out;
+
+    &:focus {
+        box-shadow: 0 0 5px $clr1;
+    }
+}
+@mixin input-form {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: calc(100% - 5px);
+    border-radius: 3px;
+    padding: rem(5px) rem(40px) rem(5px) rem(5px);
+    border: 2px solid transparent;
+    color: $clr3;
+    background-color: rgba($black, .2);
+    transition: all .3s ease-in-out;
+
+    &:focus {
+        border-color: $clr3;
+    }
+}
+@mixin ripple($bg) {
+    background-color: $bg;
+    transition: background .8s;
+    @include hover-supported {
+        background: darken($bg, 10%) radial-gradient(circle, transparent 1%, darken($bg, 10%) 1%) center/15000%;
+    }
+    &:active {
+        background-color: $bg;
+        background-size: 100%;
+        transition: background 0s;
+    }
+}
+@mixin btn-anim($color) {
+    text-transform: uppercase;
+    padding: rem(7px) rem(20px);
+    position: relative;
+    color: $color;
+    
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90%;
+        border: 2px solid $color;
+        border-radius: 100px;
+        transition: transform .4s linear;
+    }
+    &::before {
+        transform: scaleY(0);
+    }
+    @include hover-supported {
+        &::before {
+            transform: scaleY(1);
+        }
+        &::after {
+            transform: scaleX(0);
+        }
+    }
+}
+@mixin btn-form {
+    padding: rem(5px) rem(15px);
+    border-radius: 3px;
+    color: $white;
+    text-transform: uppercase;
+    border-color: $clr1;
+    @include ripple($clr1);
+}

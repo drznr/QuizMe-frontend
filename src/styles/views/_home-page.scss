@@ -1,0 +1,82 @@
+.home-page {
+    flex: 1;
+    padding-top: 40px;
+    @include for-narrow-layout {
+        padding-top: 60px;
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        margin-bottom: 60px;
+        @include for-narrow-layout {
+            width: unset;
+            margin-bottom: 0;
+        }
+
+        h1 {
+            color: $clr2;
+            flex: 1;
+            font-size: rem(36px);
+            line-height: rem(45px);
+            margin-bottom: rem(20px);
+            hyphens: auto;
+            @include for-mobile-layout {
+                font-size: rem(40px);
+                line-height: rem(55px);
+                margin-bottom: rem(60px);
+            }
+            @include for-narrow-layout {
+                margin-bottom: 0;
+            }
+            @include for-wide-layout {
+                line-height: rem(65px);
+            }
+            span {
+                color: $black;
+                display: block;
+                margin-top: rem(20px);
+                font-size: .6em;
+                font-family: raleway, sans-serif;
+                line-height: rem(30px);
+                text-transform: initial;
+                @include for-wide-layout {
+                    line-height: rem(35px);
+                }
+            }
+        }
+        &-link {
+            @include btn-simple-round($clr2, $white);
+            font-family: raleway-bold, sans-serif;
+            text-align: center;
+
+            &:first-of-type {
+                margin-bottom: 5px;
+            }
+            &:last-of-type {
+                @include btn-simple-round($white, $clr2);
+                border: 2px solid $clr2;
+            }
+        }
+    }
+    &-illustration {
+        display: flex;
+        justify-content: center;
+
+        [alt=illustration] {
+            width: 70%;
+            min-width: 300px;
+            @include for-mobile-layout {
+                min-width: 500px;
+            }
+            @include for-narrow-layout {
+                width: 100%;
+                flex-basis: 45%;
+            }
+        }
+    }
+    &-about {
+        
+    }
+}
